@@ -1,5 +1,5 @@
 IMAGENAME  = build-tools
-VERSION   ?= 0.0.2-dev
+VERSION   ?= 0.0.2
 TAG = zenoss/$(IMAGENAME):$(VERSION)
 
 .PHONY: build push clean
