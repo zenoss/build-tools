@@ -1,4 +1,4 @@
-FROM zenoss/zenoss-centos-base:1.1.4
+FROM zenoss/zenoss-centos-base:1.2.1
 MAINTAINER Zenoss <ian@zenoss.com>
 
 # add chrome for headless browser testing
@@ -32,7 +32,7 @@ RUN yum install epel-release -y \
     swig \
     which \
     bc \
-    java-1.7.0-openjdk-devel \
+    java-1.8.0-openjdk-devel \
     unzip \
     patch \
     gcc \
