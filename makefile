@@ -11,8 +11,6 @@ build: Dockerfile-jenkins
 	@docker build -t $(JENKINS-TAG) -f Dockerfile-jenkins .
 
 Dockerfile-jenkins:
-	@echo $(TAG)
-	@echo supriya
 	@sed -e 's/%BUILDTOOLSTAG%/zenoss\/$(IMAGENAME):$(VERSION)/g' Dockerfile-jenkins.in > $@
 
 push:
