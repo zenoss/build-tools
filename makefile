@@ -1,12 +1,19 @@
 IMAGENAME  = build-tools
 VERSION   ?= 0.0.4-dev
 TAG = zenoss/$(IMAGENAME):$(VERSION)
+JENKINS-TAG = $(TAG)-jenkins
 
 .PHONY: build push clean
 
-build:
+build: Dockerfile-jenkins
 	@echo Building build-tools image
 	@docker build -t $(TAG) .
+	@docker build -t $(JENKINS-TAG) -f Dockerfile-jenkins .
+
+Dockerfile-jenkins:
+	@echo $(TAG)
+	@echo supriya
+	@sed -e 's/%BUILDTOOLSTAG%/zenoss\/$(IMAGENAME):$(VERSION)/g' Dockerfile-jenkins.in > $@
 
 push:
 	docker push $(TAG)
