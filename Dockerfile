@@ -64,7 +64,6 @@ RUN yum install epel-release -y \
     python-virtualenv \
     bzr \
     git \
-    maven \
     xorg-x11-server-Xvfb \
     nodejs \
     google-chrome-stable \
@@ -79,6 +78,10 @@ ENV GOPATH /gosrc
 ENV PATH $PATH:/go/bin
 
 RUN npm install -g gulp
+
+RUN mkdir /opt/maven
+RUN wget -qO- http://apache.osuosl.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz | tar -C /opt/maven -xz --strip-components=1
+ENV PATH $PATH:/opt/maven/bin
 
 # allow container to perform actions as
 # a specific user

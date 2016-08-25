@@ -1,18 +1,25 @@
 IMAGENAME  = build-tools
-VERSION   ?= 0.0.3
+VERSION   ?= 0.0.4
 TAG = zenoss/$(IMAGENAME):$(VERSION)
+JENKINS-TAG = $(TAG)-jenkins
 
 .PHONY: build push clean
 
-build:
+build: Dockerfile-jenkins
 	@echo Building build-tools image
 	@docker build -t $(TAG) .
+	@docker build -t $(JENKINS-TAG) -f Dockerfile-jenkins .
+
+Dockerfile-jenkins:
+	@sed -e 's/%BUILDTOOLSTAG%/zenoss\/$(IMAGENAME):$(VERSION)/g' Dockerfile-jenkins.in > $@
 
 push:
 	docker push $(TAG)
+	docker push $(JENKINS-TAG)
 
 clean:
 	-docker rmi $(TAG)
+	-docker rmi $(JENKINS-TAG)
 
 # Generate a make failure if the VERSION string contains "-<some letters>"
 verifyVersion:
