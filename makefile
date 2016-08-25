@@ -15,9 +15,11 @@ Dockerfile-jenkins:
 
 push:
 	docker push $(TAG)
+	docker push $(JENKINS-TAG)
 
 clean:
 	-docker rmi $(TAG)
+	-docker rmi $(JENKINS-TAG)
 
 # Generate a make failure if the VERSION string contains "-<some letters>"
 verifyVersion:
