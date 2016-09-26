@@ -1,4 +1,4 @@
-FROM zenoss/zenoss-centos-base:1.2.1
+FROM zenoss/zenoss-centos-base:1.2.8-devtools
 MAINTAINER Zenoss <ian@zenoss.com>
 
 # add chrome for headless browser testing
@@ -14,28 +14,11 @@ RUN curl -sL https://rpm.nodesource.com/setup_6.x | bash -
 
 RUN yum install epel-release -y \
     && yum -y install \
-    mock \
     sudo \
-    'Development Tools' \
-    rpmdevtools \
-    gcc-c++ \
-    subversion \
-    cyrus-sasl-devel \
-    pango-devel \
-    readline-devel \
-    sqlite-devel \
-    bzip2-devel \
-    gdbm-devel \
-    python-devel \
-    autoconf \
     make \
-    swig \
     which \
-    bc \
-    java-1.8.0-openjdk-devel \
     unzip \
     patch \
-    gcc \
     wget \
     net-snmp \
     net-snmp-utils \
@@ -49,7 +32,6 @@ RUN yum install epel-release -y \
     rsync \
     sysstat \
     libxslt \
-    protobuf-compiler \
     libsmi \
     nmap \
     redis \
@@ -59,29 +41,17 @@ RUN yum install epel-release -y \
     openssl-devel \
     hiredis \
     tar \
-    perl-XML-XPath \
-    mercurial \
-    python-virtualenv \
-    bzr \
-    git \
     xorg-x11-server-Xvfb \
     nodejs \
     google-chrome-stable \
+    nodejs \
+    npm \
     && yum erase epel-release -y \
     && /sbin/scrub.sh
 
 RUN sed -i 's/requiretty/!requiretty/' /etc/sudoers
 
-RUN wget -qO- https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz | tar -C / -xz
-ENV GOROOT /go
-ENV GOPATH /gosrc
-ENV PATH $PATH:/go/bin
-
 RUN npm install -g gulp
-
-RUN mkdir /opt/maven
-RUN wget -qO- http://apache.osuosl.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz | tar -C /opt/maven -xz --strip-components=1
-ENV PATH $PATH:/opt/maven/bin
 
 # allow container to perform actions as
 # a specific user
