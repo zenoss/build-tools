@@ -1,4 +1,4 @@
-FROM zenoss/zenoss-centos-base:1.2.8-devtools
+FROM zenoss/zenoss-centos-base:1.2.8.devtools
 MAINTAINER Zenoss <ian@zenoss.com>
 
 # add chrome for headless browser testing
@@ -14,35 +14,8 @@ RUN curl -sL https://rpm.nodesource.com/setup_6.x | bash -
 
 RUN yum install epel-release -y \
     && yum -y install \
-    sudo \
-    make \
-    which \
-    unzip \
-    patch \
-    wget \
-    net-snmp \
-    net-snmp-utils \
-    binutils \
-    libgcj \
-    libgomp \
-    libaio \
-    readline \
-    dmidecode \
-    gnupg \
-    rsync \
-    sysstat \
-    libxslt \
-    libsmi \
-    nmap \
-    redis \
-    net-snmp-libs \
-    libcap supervisor \
-    pcre-devel \
-    openssl-devel \
-    hiredis \
-    tar \
     xorg-x11-server-Xvfb \
-    nodejs \
+    supervisor \
     google-chrome-stable \
     nodejs \
     npm \
