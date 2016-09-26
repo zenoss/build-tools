@@ -10,15 +10,15 @@ gpgcheck=1\n\
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n'\
 >> /etc/yum.repos.d/google-chrome.repo
 
+# nodejs / npm
 RUN curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+RUN yum install -y nodejs
 
 RUN yum install epel-release -y \
     && yum -y install \
     xorg-x11-server-Xvfb \
     supervisor \
     google-chrome-stable \
-    nodejs \
-    npm \
     && yum erase epel-release -y \
     && /sbin/scrub.sh
 
