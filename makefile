@@ -1,5 +1,5 @@
 IMAGENAME  = build-tools
-VERSION   ?= 0.0.5-dev
+VERSION   ?= 0.0.5
 TAG = zenoss/$(IMAGENAME):$(VERSION)
 JENKINS-TAG = $(TAG)-jenkins
 
