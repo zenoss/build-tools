@@ -1,5 +1,11 @@
 # build-tools
-Docker image with build tools needed by zenoss
+Docker image with build tools needed by zenoss.
+
+# Docker Images
+There are two docker images produced by this repo:
+* `zenoss/build-tools:<version>` - This is the primary image used by a variety of projects. 
+* `zenoss/build-tools:<version>-jenkins` - The same as `zenoss/build-tools:<version>` plus the necessary additions to be used as a jenkins slave.
+
 
 # Building
 To buid a dev images for testing locally, use
