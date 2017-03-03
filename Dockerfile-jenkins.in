@@ -9,7 +9,7 @@ RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pa
     mkdir -p /var/run/sshd
     
 # Add jenkins user    
-RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
+RUN useradd -u 1001 -m -d /home/jenkins -s /bin/sh jenkins &&\
     echo "jenkins:jenkins" | chpasswd
 
 # Standard SSH port
