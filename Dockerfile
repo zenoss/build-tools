@@ -11,7 +11,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub\n'\
 >> /etc/yum.repos.d/google-chrome.repo
 
 # nodejs / npm
-RUN curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://rpm.nodesource.com/setup_7.x | bash -
 RUN yum install -y nodejs
 
 RUN yum install epel-release -y \
@@ -24,7 +24,7 @@ RUN yum install epel-release -y \
 
 RUN sed -i 's/requiretty/!requiretty/' /etc/sudoers
 
-RUN npm install -g gulp
+RUN npm install -g gulp yarn
 
 # allow container to perform actions as
 # a specific user
