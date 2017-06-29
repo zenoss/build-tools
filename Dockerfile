@@ -1,4 +1,4 @@
-FROM zenoss/zenoss-centos-base:1.2.10.devtools
+FROM zenoss/zenoss-centos-base:1.2.11.devtools
 MAINTAINER Zenoss <ian@zenoss.com>
 
 # add chrome for headless browser testing
@@ -25,6 +25,10 @@ RUN yum install epel-release -y \
 RUN sed -i 's/requiretty/!requiretty/' /etc/sudoers
 
 RUN npm install -g gulp yarn
+
+# Python dev tools
+RUN pip install --upgrade pip==9.0.1 setuptools
+RUN yum -y install python-lxml libffi-devel
 
 # allow container to perform actions as
 # a specific user
