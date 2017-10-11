@@ -1,4 +1,4 @@
-FROM zenoss/zenoss-centos-base:1.2.11.devtools
+FROM zenoss/zenoss-centos-base:1.2.12.devtools
 MAINTAINER Zenoss <ian@zenoss.com>
 
 # add chrome for headless browser testing
