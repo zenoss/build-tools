@@ -19,6 +19,7 @@ RUN yum install epel-release -y \
     xorg-x11-server-Xvfb \
     supervisor \
     google-chrome-stable \
+    libuuid-devel \
     && yum erase epel-release -y \
     && /sbin/scrub.sh
 
