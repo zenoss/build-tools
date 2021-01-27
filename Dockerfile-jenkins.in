@@ -7,10 +7,13 @@ RUN yum install -y openssh-server && yum clean all
 # Update sshd settings
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd &&\
     mkdir -p /var/run/sshd
-    
-# Add jenkins user    
+
+# Add jenkins user
 RUN useradd -u 1001 -m -d /home/jenkins -s /bin/sh jenkins &&\
     echo "jenkins:jenkins" | chpasswd
+
+# Set default java version to 11
+RUN alternatives --set java /usr/lib/jvm/$(rpm -q java-11-openjdk)/bin/java
 
 # Standard SSH port
 EXPOSE 22

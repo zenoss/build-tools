@@ -38,3 +38,6 @@ ADD userdo.sh /root/userdo.sh
 # workaround "D-Bus library appears to be incorrectly set up" error
 # when running xvfb/chrome
 RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
+# install java 11
+RUN yum -y install java-11-openjdk
